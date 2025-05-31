@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+body {
+    font-family: "Prata", sans-serif;
+    min-height: 100vh;
+}
+.brand-main  { background-color: #004224; }
+.brand-brown { background-color: #423a26; }
+.text-brand-light { color: #f8f0e5; }
+.brand-light {background-color: #f8f0e5}
+.darker-green { background-color: #00391e}
+
+/* header profil billede */
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #f8f0e5;
+}
+
+/* Selve nav bar */
+
+.main-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.35rem 0;
+    z-index: 1030;
+}
+.navbar .container-fluid {
+    display: flex;
+    justify-content: flex-start;
+}
+.navbar .nav-link {
+    display: flex;
+    align-items: center;
+}
+
+/* Navbar knapper  */
+
+.btn-group .button {
+    background-color: #423a26;
+    border: 2px solid #004224;
+    color: #f8f0e5;
+    text-align: center; /* ikke rigtig nødvendig, men sikkerhedsskyld */
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+    flex: 1;
+    width: 100%;
+    height: 55px;
+}
+.btn-group .button:not(:last-child) {
+    border-right: none; /* stopper dobbelt border */
+}
+.btn-group .button:hover {
+    background-color: #004224;
+}
+
+
+/* profil informationer */
+.container1 {
+    background: #004224;
+    height: 160px;
+    width: 100%;
+    border-top: 5px solid #00301b;
+    border-bottom: 5px solid #00301b;
+    display: flex;
+}
+
+/* absolute og ikke fixed, fixed følger de med */
+
+.container1 .profile-picture {
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #f8f0e5;
+    position: absolute;
+}
+
+.container1 .profile-name {
+    margin-top: 25px;
+    margin-left: 120px;
+    position: absolute;
+}
+.container1 .profile-username {
+    margin-top: 55px;
+    margin-left: 120px;
+    position: absolute;
+    font-size: medium;
+
+}
+
+.container1 .sell-button {
+    position: fixed;
+    bottom: 60px;
+    right: 28px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;      /* de 3 her er nødvendige, så tekst i midten af knap */
+    width: 130px;
+    height: 45px;
+    background-color: #004224;
+    border: 2px solid #00391e;
+    color: #f8f0e5;
+    text-align: center;
+    text-decoration: none;
+    z-index: 100000;
+    border-radius: 50%;
+
+}
+.container1 .edit-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;      /* de 3 her er nødvendige, så tekst i midten af knap */
+    margin-left: 260px;
+    margin-top: 105px;
+    width: 120px;
+    height: 37px;
+    background-color: #004224;
+    border: 2px solid #00391e;
+    color: #f8f0e5;
+    text-align: center;
+    text-decoration: none;
+}
+.container1 .admin-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;      /* de 3 her er nødvendige, så tekst i midten af knap */
+    width: 120px;
+    height: 37px;
+    background-color: #004224;
+    border: 2px solid #00391e;
+    color: #f8f0e5;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 105px;
+    margin-left: 130px;
+
+}
+
+/* forstår ikke denne */
+
+@media (max-width: 767.98px) {
+    body {
+        padding-bottom: 64px;
+    }
+}
+
+/* salgs opslag */
+.product-card {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.product-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform 0.25s;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.price-tag {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.4rem;
+    background: #423a26;
+    color: #f8f0e5;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.15rem 0.45rem;
+}
+
+.product-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #423a26;
+    line-height: 1.2;
+}
+
+.product-meta {
+    font-size: 0.75rem;
+    color: #423a26;
+}
+
+/* navbar icon'er, laver nok en rigtig gruppe */
+.icon-img3 {
+    width: 55px;
+    height: 50px;
+    object-fit: contain;
+}
+.nav-link {
+    color: #f8f0e5;
+    font-size: medium;
+}

@@ -1,0 +1,81 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+:root{
+    --gm-dark-green:#004224;
+    --gm-white-brand:#f8f0e5;
+    --gm-dark-brown:#423a26;
+}
+
+body{
+    font-family:"Prata",sans-serif;
+    background:var(--gm-white-brand);
+}
+
+.bg-dark-green{background:var(--gm-dark-green);}
+.text-white-brand{color:var(--gm-white-brand);}
+
+
+.listing-page .listing-img{
+    width:100%;
+    object-fit:cover;
+    max-height:420px;
+    border-radius:.5rem;
+}
+
+
+.listing-page .price-tag{
+    position:absolute;
+    bottom:.85rem;
+    right:.85rem;
+    background:var(--gm-dark-brown);
+    color:var(--gm-white-brand);
+    font-weight:600;
+    font-size:1rem;
+    padding:.35rem .8rem;
+    border-radius:.4rem;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+    z-index:10;
+}
+@media(max-width:576px){
+    .listing-page .price-tag{
+        font-size:.9rem;
+        padding:.25rem .7rem;
+    }
+}
+
+
+.listing-page h2{
+    font-size:1.45rem;
+    font-weight:600;
+}
+
+.listing-page ul{
+    padding-left:0;
+    margin-bottom:1.5rem;
+}
+
+.listing-page ul li{
+    list-style:none;
+    margin-bottom:.3rem;
+    font-size:.95rem;
+}
+
+
+.listing-page .btn-success{
+    background:var(--gm-dark-green);
+    border-color:var(--gm-dark-green);
+    color:var(--gm-white-brand);
+    font-size:1rem;
+}
+
+.listing-page .btn-success:hover{
+    background:#016237;
+    border-color:#016237;
+}
+
+@media(max-width:576px){
+    .listing-page .col-12:not(:last-child){
+        margin-bottom:1.5rem;
+    }
+}

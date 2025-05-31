@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF‑8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body class = "brand-light d-flex flex-column">
+
+<!--top menu'en-->
+<div class = "header brand-main">
+    <a class="text-center text-brand-light arrow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="bi bi-arrow-left"></i></a>
+    <p class = "text text-brand-light">Menu</p><br>
+
+</div>
+
+<!--sidebaren-->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Admin menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <a th:if="${isAdmin}"
+           class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+           th:href="@{/adminPanel}">
+            Admin panel
+        </a><br>
+        <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover " href="#">
+            All listings
+        </a><br>
+        <a th:if="${isAdmin}"
+           class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+           th:href="@{/newArrivals}">
+            New Arrivals
+        </a><br>
+        <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+            Collections
+        </a><br>
+        <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+            Users
+        </a><br>
+    </div>
+</div>
+
+<div class = "information">
+    <p>TOTAL CLIENTS</p>
+    <p>123</p>
+    <p>TOTAL LISTINGS</p>
+    <p>268</p>
+</div>
+
+<div class = "client-listings">
+    <p>LISTING INFORMATION</p>
+<p>𖧋 brand: h&m price: 1000kr seller: Kirsten status: approved</p>
+    <p>𖧋 brand: only price: 13000kr seller: Lars status: sold</p>
+</div>
+
+<div class = "client-new">
+<p>NEW CLIENTS</p>
+<p>𖧋 name: jesper member since: 14-05-2025</p>
+    <p>𖧋 name: Pernille member since: 13-05-2025</p>
+    <p>𖧋 name: Grette member since: 04-05-2025</p>
+</div>
+
+
+<!--bund menuen-->
+<nav class="navbar fixed-bottom navbar-dark brand-brown d-lg-none">
+    <div class="container-fluid justify-content-around">
+        <a class="nav-link text-center text-brand-light" th:href="@{/home}"><i class="bi bi-house"></i></a>
+        <a class="nav-link text-center text-brand-light" href="#"><i class="bi bi-search"></i></a>
+        <a class="nav-link text-center text-brand-light" href="#"><i class="bi bi-heart"></i></a>
+        <a class="nav-link text-center text-brand-light" th:href="@{/privateUser}"><i class="bi bi-person-circle"></i></a>
+        <a class="nav-link text-center text-brand-light" href="#"><i class="bi bi-bell"></i></a>
+    </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

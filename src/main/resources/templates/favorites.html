@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gilbert</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header class="navbar navbar-dark bg-dark-green py-2 px-3">
+
+  <!-- Search (kun desktop) -->
+  <form class="d-none d-lg-block me-3" th:action="@{/home}" method="get">
+    <input class="form-control form-control-sm"
+           type="text"
+           name="search"
+           placeholder="Search items…"
+           th:value="${search}">
+    <div th:if="${#lists.isEmpty(listings)}"
+         class="alert alert-warning mt-3">
+      No items found for “<span th:text="${search}">term</span>”.
+    </div>
+  </form>
+
+
+
+  <a class="navbar-brand mx-auto text-white-brand fw-bold" th:href="@{/home}">Gilbert</a>
+
+  <!--ku ndesktop-->
+  <div class="d-none d-lg-flex align-items-center ms-auto">
+    <th:block th:if="${currentUser == null}">
+      <a class="btn btn-outline-light btn-desktop" th:href="@{/login}">Sign in</a>
+      <a class="btn btn-outline-light btn-desktop" th:href="@{/signup}">Sign up</a>
+    </th:block>
+    <!--Viser ikon når man er logget ind, så man ikke skal se på sign in og up konstant-->
+    <th:block th:if="${currentUser != null}">
+      <a class="nav-link text-white-brand" th:href="@{/privateUser}">
+        <i class="bi bi-person-circle fs-4"></i>
+      </a>
+    </th:block>
+  </div>
+</header>
+
+  <main class="container home-listing py-4">
+    <div class="mb-3 d-flex justify-content-end">
+      <div class="dropdown">
+        <button class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="me-1" th:text="${sortBy == 'price' and direction == 'asc'} ? 'Price Ascending' :
+                                           (${sortBy == 'price' and direction == 'desc'} ? 'Price Descending' :
+                                           (${sortBy == 'createdAt' and direction == 'asc'} ? 'Oldest' : 'Most Recent'))"></span>
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" th:href="@{/favorites(sortBy='price',direction='asc')}" th:class="${sortBy == 'price' and direction == 'asc'} ">Price Ascending</a></li>
+          <li><a class="dropdown-item" th:href="@{/favorites(sortBy='price',direction='desc')}" th:class="${sortBy == 'price' and direction == 'desc'}">Price Descending</a></li>
+          <li><a class="dropdown-item" th:href="@{/favorites(sortBy='createdAt',direction='desc')}" th:class="${sortBy == 'createdAt' and direction == 'desc'}">Most Recent</a></li>
+          <li><a class="dropdown-item" th:href="@{/favorites(sortBy='createdAt',direction='asc')}" th:class="${sortBy == 'createdAt' and direction == 'asc'} ">Oldest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 row-cols-xxl-5 g-3">
+      <div class="col" th:each="listing : ${listings}">
+        <a th:href="@{/listings/{id}(id=${listing.listingId})}"
+           class="d-block h-100 text-decoration-none">
+          <div class="card h-100 position-relative">
+
+
+            <form th:action="@{/favorites/toggle}" method="post"
+                  class="position-absolute top-0 end-0 p-2"
+                  th:object="${listing}">
+              <input type="hidden" name="listingId" th:value="${listing.listingId}" />
+              <button type="submit" class="btn btn-link p-0 border-0 bg-transparent" aria-label="Toggle favorite">
+
+                <!--                            det er her vi tjekker med favoriteMap hvilekt icon den skal vise-->
+                <i class="bi"
+                   th:classappend="${favoriteMap[listing.listingId]} ? 'bi-heart-fill text-danger' : 'bi-heart text-success'"
+                   style="font-size: 1.5rem;"></i>
+              </button>
+            </form>
+            <!--                    <span class="price-tag" th:text="${listing.price} + ' kr'"></span>-->
+            <img th:if="${listing.imageFileName != null}"
+                 th:src="@{/uploads/{filename}(filename=${listing.imageFileName})}"
+                 th:alt="wadswasd"
+                 class="card-img-top">
+            <div class="card-body p-2 d-flex flex-column">
+              <h6 class="card-title mb-2" th:text="${listing.brand} + ' ' + ${listing.model}">Brand Model</h6>
+              <small class="text-muted" th:text="'Size: ' + (${listing.sizeLabel} ?: 'N/A')">Size</small>
+              <small class="text-muted mb-3" th:text="'Price: ' + (${listing.price} ?: 'N/A')">Price </small>
+              <button class="btn btn-outline-success w-100 mt-auto"> View details</button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark-brown d-lg-none">
+  <div class="container-fluid justify-content-around">
+    <a class="nav-link text-center text-white-brand" th:href="@{/home}"><i class="bi bi-house"></i></a>
+    <a class="nav-link text-center text-white-brand" href="#" data-bs-toggle="modal" data-bs-target="#mobileSearchModal"><i class="bi bi-search"></i></a>
+    <a class="nav-link text-center text-white-brand" href="#"><i class="bi bi-heart"></i></a>
+    <a class="nav-link text-center text-white-brand" th:href="@{/privateUser}"><i class="bi bi-person-circle"></i></a>
+    <a class="nav-link text-center text-white-brand" href="#"><i class="bi bi-bell"></i></a>
+  </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

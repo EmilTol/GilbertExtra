@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+:root {
+    --gm-dark-green:#004224;
+    --gm-white-brand:#f8f0e5;
+    --gm-dark-brown:#423a26;
+}
+
+body { font-family:"Prata",sans-serif; background:var(--gm-white-brand); }
+
+.bg-dark-green { background:var(--gm-dark-green)}
+.bg-dark-brown { background:var(--gm-dark-brown)}
+.text-white-brand    { color:var(--gm-white-brand)}
+
+.brand-bg { background:var(--gm-dark-green); }
+
+.product-card { border:none; border-radius:.5rem; overflow:hidden; background:#fff; }
+.product-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.15); transition:.2s; }
+
+.me-2 {
+    font-size: 15px !important;
+}
+.btn-desktop {
+    font-size: 15px;
+    margin: 2px;
+}
+
+.btn-primary {
+    background-color: var(--gm-dark-green);
+    border-color: var(--gm-dark-green);
+    color: var(--gm-white-brand);
+}
+
+.card {
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    /*hello*/
+}
+
+.home-listing .price-tag{
+    position:absolute;
+    top:.45rem;
+    left:.45rem;
+    background:var(--gm-dark-green);
+    color:var(--gm-white-brand);
+    font-weight:600;
+    font-size:.8rem;
+    padding:.1rem .55rem;
+    border-radius:.25rem;
+    z-index:5;
+}
+
+.dropdown .btn-primary {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.dropdown .btn-primary:hover, .dropdown .btn-primary:focus {
+    background-color: #00331a;
+    border-color: #00331a;
+}
+
+.dropdown-menu {
+    background: var(--gm-white-brand);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 10rem;
+}
+
+.dropdown-item:hover {
+    background: var(--gm-dark-green);
+    color: var(--gm-white-brand);
+}
+.dropdown-toggle-split::after {
+    margin-left: 0.5rem;
+}
+
+@media (max-width:576px){ body{padding-bottom:56px;} }

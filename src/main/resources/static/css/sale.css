@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+body {
+    font-family: "Prata", sans-serif;
+    min-height: 100vh;
+}
+.brand-main  { background-color: #004224; }
+.brand-brown { background-color: #423a26; }
+.brand-light {background-color: #f8f0e5}
+.text-brand-light { color: #f8f0e5; }
+
+
+.main-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    padding: 0.35rem 0;
+    z-index: 1030;
+}
+
+@media (min-width: 768px) {
+    .main-nav {
+        position: static;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-bottom: 64px;
+
+    }
+}
+
+.container1 {
+    margin-left: 10px;
+    margin-top: 30px;
+    align-items: center;
+    text-align: left;
+    text-decoration: none;
+}
+.container1 label {
+    margin-top: 10px;
+}
+.container1 button {
+    margin-top: 10px;
+    color: #f8f0e5;
+    background-color: #423a26;
+    width: 240px;
+    height: 60px;
+    border: 2px solid #00301b;
+}
+
+.container1 input {
+    width: 90%;
+    height: 50px;
+}
+.container1 select {
+    width: 90%;
+    height: 50px;
+}
+.container1 textarea {
+    width: 90%;
+    height: 60px;
+}
