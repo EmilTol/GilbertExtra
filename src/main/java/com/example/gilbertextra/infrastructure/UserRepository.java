@@ -88,7 +88,7 @@ public class UserRepository {
         } catch (EmptyResultDataAccessException e) {
             return null;
         } catch (DataAccessException dataAccessException) {
-            throw new UserNotFoundException(id); // TEST TEST TES
+            throw new UserNotFoundException(id);
         }
     }
 
