@@ -70,4 +70,8 @@ public class UserService {
     public User getPublicUserById(long userId) {
         return userRepository.findUserById(userId);
     }
+
+    public void deleteUser(long userId) {
+        userRepository.deleteById(userId);
+    }
 }

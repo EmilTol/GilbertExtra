@@ -274,6 +274,16 @@ public class MainController {
         return "redirect:/privateUser";
 
     }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        if (currentUser != null) {
+            userService.deleteUser(currentUser.getUserId());
+            session.invalidate();
+        }
+        return "redirect:/home";
+    }
     //side til opret listing
     @GetMapping("/createSale")
     public String showCreateListingForm(Model model, HttpSession session) {
@@ -348,6 +358,16 @@ public class MainController {
         Listing listing = listingService.getListingById(id);
         model.addAttribute("listing", listing);
         return "listingPage";
+    }
+
+    @PostMapping("/listings/{id}/delete")
+    public String deleteListing(@PathVariable Long id, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        if (currentUser == null) {
+            return "redirect:/login";
+        }
+        listingService.deleteListing(id, currentUser.getUserId());
+        return "redirect:/privateUser";
     }
 
     //side til admins

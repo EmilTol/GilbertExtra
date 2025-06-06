@@ -158,4 +158,12 @@ public class ListingService {
         return listingRepository.findByUserIdAndStatus(userId, Listing.Status.SOLD);
     }
 
+    public void deleteListing(Long listingId, Long userId) {
+        Listing listing = listingRepository.findListingById(listingId);
+        if (listing == null || !listing.getSellerId().equals(userId)) {
+            throw new SecurityException("User not allowed to delete this listing");
+        }
+        listingRepository.deleteById(listingId);
+    }
+
 }
