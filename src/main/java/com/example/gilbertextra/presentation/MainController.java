@@ -284,6 +284,14 @@ public class MainController {
         }
         return "redirect:/home";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        if (session != null) {
+            session.invalidate();
+        }
+        return "redirect:/home";
+    }
     //side til opret listing
     @GetMapping("/createSale")
     public String showCreateListingForm(Model model, HttpSession session) {
