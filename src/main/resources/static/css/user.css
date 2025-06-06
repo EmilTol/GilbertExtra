@@ -146,6 +146,22 @@ body {
 
 }
 
+.container1 .logout-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 37px;
+    background-color: #004224;
+    border: 2px solid #00391e;
+    color: #f8f0e5;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 105px;
+    margin-left: 0;
+}
+
 /* forstår ikke denne */
 
 @media (max-width: 767.98px) {
