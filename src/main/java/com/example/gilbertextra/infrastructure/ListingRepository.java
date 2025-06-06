@@ -250,4 +250,9 @@ public class ListingRepository {
             return listing;
         });
     }
+
+    public void deleteById(Long listingId) {
+        String sql = "DELETE FROM listings WHERE listing_id = ?";
+        jdbcTemplate.update(sql, listingId);
+    }
 }
