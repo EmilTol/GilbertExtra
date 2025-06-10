@@ -28,7 +28,6 @@ public class MainController {
     private final LoginService loginService;
     private final ListingService listingService;
     private final UserService userService;
-    private final ListingRepository listingRepository; //bliver ikke brugt
     private final SortingService sortingService;
 
     @Autowired
@@ -36,7 +35,6 @@ public class MainController {
         this.loginService  = loginService;
         this.listingService = listingService;
         this.userService = userService;
-        this.listingRepository = listingRepository;
         this.sortingService = sortingService;
     }
 
