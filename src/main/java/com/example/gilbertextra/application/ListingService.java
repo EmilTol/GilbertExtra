@@ -66,15 +66,6 @@ public class ListingService {
         return listingRepository.findAllSizes();
     }
 
-    //    public Map<Long, List<Category>> getSubCategoriesForAllParents(List<Category> parentCategories) { // Opretter en HashMap til at lagre underkategorier for hver forældrekategori
-//        Map<Long, List<Category>> subCategoriesMap = new HashMap<>(); // Nøglen er forældrekategoriens ID, og værdien er en liste af underkategorier
-//
-//        for (Category parent : parentCategories) { // går igennem alle forældrekategorier for at hente deres underkategorier
-//            List<Category> subCategories = listingRepository.findSubCategoriesByParentId(parent.getCategoryId()); // Henter underkategorier for den aktuelle forældrekategori ved hjælp af repository
-//            subCategoriesMap.put(parent.getCategoryId(), subCategories); // Tilføjer underkategorierne til HashMap med forældrekategoriens ID som nøgle
-//        }
-//        return subCategoriesMap; // Returnerer HashMap med alle underkategorier organiseret efter forældrekategorier
-//    }
     //henter alle Listings med status pending
     public List<Listing> getPendingListings() {
         return listingRepository.findByStatus(Listing.Status.PENDING);
